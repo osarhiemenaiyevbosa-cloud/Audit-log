@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { param } = require('express-validator');
-const { protect } = require('../Middleware/authMiddleware');
-const validate = require('../Middleware/validate');
+const { protect } = require('../middleware/authMiddleware');
+const validate = require('../middleware/validate');
 const { list, markRead, markAllRead } = require('../controllers/notificationController');
 
 router.use(protect);
