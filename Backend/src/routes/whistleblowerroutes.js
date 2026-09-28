@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const router = require('express').router();
 const { body, param } = require('express-validator');
 const { submit, list, detail, updateStatus } = require('../controllers/whistleblowercontroller');
 const validate = require('../middleware/validate');
