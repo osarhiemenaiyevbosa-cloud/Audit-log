@@ -13,4 +13,22 @@ async function markRead(req, res, next) {
   res.json({ success: true, data: item }); }
   catch (e) { next(e); }
 }
-module.exports = { list, markRead };
+
+async function markAllRead(req, res, next) {
+  try {
+    const result = await Notification.updateMany(
+      { userId: req.user._id, status: 'UNREAD' },
+      { status: 'READ' }
+    );
+
+    res.json({
+      success: true,
+      message: 'All notifications marked as read',
+      updatedCount: result.modifiedCount ?? result.nModified ?? 0
+    });
+  } catch (e) {
+    next(e);
+  }
+}
+
+module.exports = { list, markRead, markAllRead };

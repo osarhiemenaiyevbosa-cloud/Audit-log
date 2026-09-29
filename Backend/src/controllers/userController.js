@@ -1,6 +1,8 @@
+const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const { createAuditEvent } = require('../services/auditService');
 const { sendEmail } = require('../services/emailService');
+
 async function listUsers(req, res, next) {
   try {
     const filter = req.user.role === 'SYSTEM_ADMIN' ? {} : { companyId: req.user.companyId };

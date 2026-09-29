@@ -4,11 +4,14 @@ const Company = require('../models/Company');
 const generateToken = require('../utils/generateToken');
 const { createAuditEvent } = require('../services/auditService');
 const { sendEmail } = require('../services/emailService');
+
 async function register(req, res, next) {
   try {
     const { companyName, registrationNumber, companyEmail, name, email, password } = req.body;
-    if (await User.findOne({ email })) return res.status(409).json({ success: false, message: 'Email already exists' });
-    if (await Company.findOne({ registrationNumber })) return res.status(409).json({ success: false, message: 'Registration number already exists' });
+    if (await User.findOne({ email })) 
+      return res.status(409).json({ success: false, message: 'Email already exists' });
+    if (await Company.findOne({ registrationNumber })) 
+      return res.status(409).json({ success: false, message: 'Registration number already exists' });
     const company = await Company.create({ 
       name: companyName, 
       registrationNumber, 

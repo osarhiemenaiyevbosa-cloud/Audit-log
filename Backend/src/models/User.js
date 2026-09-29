@@ -15,18 +15,22 @@ const userSchema = new mongoose.Schema({
     required: true, 
     unique: true, 
     lowercase: true, 
-    trim: true },
+    trim: true 
+  },
   passwordHash: { 
     type: String, 
-    required: true },
+    required: true 
+  },
   role: { 
     type: String, 
     enum: ['SYSTEM_ADMIN', 'COMPANY_ADMIN', 'AUDITOR', 'USER', 'VIEWER'], 
-    default: 'USER' },
+    default: 'USER' 
+  },
   status: { 
     type: String, 
     enum: ['ACTIVE', 'INACTIVE'], 
-    default: 'ACTIVE' },
+    default: 'ACTIVE' 
+  },
   lastLoginAt: Date
 }, { timestamps: true });
 userSchema.methods.toSafeJSON = function () {

@@ -1,4 +1,4 @@
-const router = require('express').router();
+const router = require('express').Router();
 
 router.use('/auth', require('./authRoutes'));
 router.use('/companies', require('./companyRoutes'));
@@ -7,6 +7,6 @@ router.use('/audit-logs', require('./auditRoutes'));
 router.use('/dashboard', require('./dashboardRoutes'));
 router.use('/notices', require('./noticeRoutes'));
 router.use('/notifications', require('./notificationRoutes'));
-router.use('/whistleblower', require('./whistleblowerroutes'));
+router.use('/whistleblower', require('./whistleblowerRoutes'));
 
 module.exports = router;
