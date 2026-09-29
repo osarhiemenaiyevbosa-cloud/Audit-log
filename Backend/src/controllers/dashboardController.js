@@ -1,4 +1,4 @@
-const AuditLog = require('../models/AuditLog');
+const AuditLog = require('../models/audit');
 const User = require('../models/User');
 const Company = require('../models/Company');
 const WhistleblowerReport = require('../models/WhistleblowerReport');
