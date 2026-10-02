@@ -11,6 +11,7 @@ async function register(req, res, next) {
       companyName,
       registrationNumber,
       companyEmail,
+      phone,
       name,
       email,
       password
@@ -33,7 +34,8 @@ async function register(req, res, next) {
     const company = await Company.create({
       name: companyName,
       registrationNumber,
-      email: companyEmail
+      email: companyEmail,
+      phone
     });
 
     const passwordHash = await bcrypt.hash(password, 12);
