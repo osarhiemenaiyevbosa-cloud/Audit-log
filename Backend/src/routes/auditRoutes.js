@@ -9,7 +9,7 @@ const {
   getAuditLog,
   importAuditLogs,
   exportAuditLogs,
-} = require("../controllers/auditcontroller");
+} = require("../controllers/auditController");
 const { PERMISSIONS } = require("../utils/constants");
 const uploadDir = path.join(process.cwd(), "uploads");
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
