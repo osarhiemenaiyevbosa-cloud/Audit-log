@@ -79,17 +79,16 @@ Create `Backend/.env`:
 | `JWT_SECRET` | Yes | Secret used to sign and verify tokens. |
 | `JWT_EXPIRES_IN` | No | Token lifetime. Defaults to `1d`. |
 | `PORT` | No | API port. Defaults to `5000`. |
-| `CLIENT_URL` | No | Allowed CORS origin. Defaults to `http://localhost:5173`. |
+| `CLIENT_URL` |Defaults to `audit-log-r6sh.vercel.app`. |
 | `WHISTLEBLOWER_ENCRYPTION_KEY` | Yes* | 64 hex characters (32 bytes) for AES-256-GCM. *Needed for whistleblower reports. |
-| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` | No | SMTP settings. If any are missing, emails are printed to the console instead of sent. |
-| `MAIL_FROM` | No | Sender address for outgoing email. |
+
 
 Example:
 
 ```env
 MONGO_URI=mongodb://localhost:27017/audit-log
 JWT_SECRET=change-me-to-a-long-random-string
-CLIENT_URL=http://localhost:5173
+CLIENT_URL= audit-log-r6sh.vercel.app
 WHISTLEBLOWER_ENCRYPTION_KEY=<output of: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))">
 ```
 
@@ -292,11 +291,11 @@ npm run dev
 
 | Variable | Description |
 | :--- | :--- |
-| `VITE_API_URL` | Base URL of the backend. Defaults to `http://localhost:5000`. |
+| `VITE_API_URL` | Base URL of the backend. Defaults to `https://audit-log-1-ukc4.onrender.com`. |
 
 | Command | What it does |
 | :--- | :--- |
-| `npm run dev` | Start the Vite dev server (default `http://localhost:5173`) |
+| `npm run dev` | Start the Vite dev server (default `audit-log-r6sh.vercel.app`) |
 | `npm run build` | Production build into `dist/` |
 | `npm run preview` | Serve the production build locally |
 | `npm run lint` | Run Oxlint |
@@ -353,6 +352,15 @@ These came up while reading the code. They are easy to miss on Windows or macOS 
 - **Whistleblower submission** currently requires a login (`protect`), though the Swagger docs describe it as a public endpoint.
 - **API contract.** `docs/AUDIT_API_CONTRACT.md` lists an `entity` filter and a default page size of 10. The backend uses `resourceType` and defaults to 20.
 
+##  Deployment
+
+| Part | Platform | URL |
+| :--- | :--- | :--- |
+| Backend | Render | https://audit-log-1-ukc4.onrender.com |
+| Frontend | Vercel | https://audit-log-r6sh.vercel.app |
+
+When deploying, make sure the backend's `CLIENT_URL` matches the deployed frontend URL and the frontend's `VITE_API_URL` points at the deployed backend.
+
 ## Contributing
 
 1. Create a branch from `master`.
@@ -361,15 +369,15 @@ These came up while reading the code. They are easy to miss on Windows or macOS 
 4. Update this README and `docs/AUDIT_API_CONTRACT.md` when an endpoint changes.
 
 ## Project Context
+Group 27. The audit API endpoints are documented in `docs/AUDIT_API_CONTRACT.md`.
 
-Group 27 project. The audit API endpoints are documented in `docs/AUDIT_API_CONTRACT.md`.
-
-## PROJECT CONTRIBUTORS
-- Michael Okeorji Ayobami and BarakatIsmael  : authentication, RBAC, organisation access
-- Topeadegbemile-afk: audit engine and audit APIs
-- marycaniceoraneli : companies UI
-- Wunmex: dashboard APIs/metrics support and also dashboard ui
-- Nyxa045: audit log UI integration and import/export integration
-- FranTech: import/export, notices and notifications
-- JAY: whistleblower, QA, integration and deployment
-- Arvel12: code review
+| Contributor | Responsibility |
+| :--- | :--- |
+| Michael Okeorji Ayobami and BarakatIsmael | Authentication, RBAC, organisation access |
+| Topeadegbemile-afk | Audit engine, audit APIs and company assets |
+| marycaniceoraneli | Companies UI |
+| Wunmex | Dashboard APIs/metrics support and dashboard UI |
+| Nyxa045 | Audit log UI integration, import/export integration |
+| FranTech | Import/export, notices and notifications |
+| JAY | Whistleblower, QA, integration and deployment |
+| Arvel12 | Code review |
