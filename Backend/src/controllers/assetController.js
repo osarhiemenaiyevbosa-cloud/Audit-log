@@ -1,5 +1,5 @@
 const Asset = require('../models/Asset');
-const { createAuditEvent } = require('../services/auditService');
+const { createAuditEvent } = require('../services/auditservice');
 
 function companyScope(req) {
   if (req.user.role === 'SYSTEM_ADMIN') {

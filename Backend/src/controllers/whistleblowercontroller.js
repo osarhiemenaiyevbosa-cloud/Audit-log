@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const WhistleblowerReport = require('../models/WhistleblowerReport');
 const { encrypt, decrypt } = require('../utils/crypto');
-const { createAuditEvent } = require('../services/auditService');
+const { createAuditEvent } = require('../services/auditservice');
 
 async function submit(req, res, next) {
     try {

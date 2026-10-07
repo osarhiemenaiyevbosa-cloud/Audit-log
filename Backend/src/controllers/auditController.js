@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { parse } = require("csv-parse/sync");
 const AuditLog = require("../models/AuditLog");
-const { createAuditEvent } = require("../services/auditService");
+const { createAuditEvent } = require("../services/auditservice");
 function buildFilter(req) {
   const filter = {};
   if (req.user.role !== "SYSTEM_ADMIN") filter.companyId = req.user.companyId;

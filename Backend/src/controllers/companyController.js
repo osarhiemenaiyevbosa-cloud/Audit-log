@@ -1,6 +1,6 @@
 const Company = require('../models/Company');
 const User = require('../models/User');
-const { createAuditEvent } = require('../services/auditService');
+const { createAuditEvent } = require('../services/auditservice');
 const { sendEmail } = require('../services/emailService');
 
 async function listCompanies(req, res, next) {

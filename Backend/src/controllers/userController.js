@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
-const { createAuditEvent } = require('../services/auditService');
+const { createAuditEvent } = require('../services/auditservice');
 const { sendEmail } = require('../services/emailService');
 
 async function listUsers(req, res, next) {

@@ -11,7 +11,7 @@
  * Backend/Docs/FRANZOR-DOCUMENTATION.md for the full picture.
  */
 const Notice = require('../models/Notice');
-const { createAuditEvent } = require('../services/auditService');
+const { createAuditEvent } = require('../services/auditservice');
 
 // GET /api/notices
 // Public "what's live right now" feed for the notice board / dashboard.

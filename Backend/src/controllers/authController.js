@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const Company = require('../models/Company');
 const generateToken = require('../utils/generateToken');
-const { createAuditEvent } = require('../services/auditService');
+const { createAuditEvent } = require('../services/auditservice');
 const { sendEmail } = require('../services/emailService');
 
 async function register(req, res, next) {
