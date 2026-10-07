@@ -11,7 +11,6 @@ async function register(req, res, next) {
       companyName,
       registrationNumber,
       companyEmail,
-      phone,
       name,
       email,
       password
@@ -34,8 +33,7 @@ async function register(req, res, next) {
     const company = await Company.create({
       name: companyName,
       registrationNumber,
-      email: companyEmail,
-      phone
+      email: companyEmail
     });
 
     const passwordHash = await bcrypt.hash(password, 12);
@@ -146,6 +144,30 @@ async function me(req, res) {
   });
 }
 
+async function updateProfile(req, res, next) {
+  try {
+    const before = { name: req.user.name, phone: req.user.phone };
+    req.user.name = req.body.name;
+    if (req.body.phone !== undefined) req.user.phone = req.body.phone;
+    await req.user.save();
+
+    await createAuditEvent({
+      req,
+      action: 'PROFILE_UPDATE',
+      resourceType: 'User',
+      resourceId: req.user._id.toString(),
+      companyId: req.user.companyId,
+      before,
+      after: { name: req.user.name, phone: req.user.phone },
+      description: 'User profile updated'
+    });
+
+    res.json({ success: true, user: req.user.toSafeJSON() });
+  } catch (e) {
+    next(e);
+  }
+}
+
 async function logout(req, res, next) {
   try {
     await createAuditEvent({
@@ -169,5 +191,6 @@ module.exports = {
   register,
   login,
   me,
+  updateProfile,
   logout
 };

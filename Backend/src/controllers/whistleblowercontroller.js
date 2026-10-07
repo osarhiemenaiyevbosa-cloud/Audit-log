@@ -8,7 +8,8 @@ async function submit(req, res, next) {
         const referenceCode = `WB-${crypto.randomBytes(5).toString('hex').toUpperCase()}`;
         const report = await WhistleblowerReport.create({
             referenceCode,
-            encryptedContent: encrypt(req.body.content)
+            encryptedContent: encrypt(req.body.content),
+            category: req.body.category || 'GENERAL'
         });
 
         res.status(201).json({

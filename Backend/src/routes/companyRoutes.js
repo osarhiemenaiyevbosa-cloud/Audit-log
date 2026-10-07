@@ -16,7 +16,6 @@ router.use(protect);
 
 router.get(
   '/',
-  requirePermission(PERMISSIONS.MANAGE_COMPANIES),
   listCompanies
 );
 

@@ -1,7 +1,14 @@
 const mongoose = require('mongoose');
+
 async function connectDB() {
-  if (!process.env.MONGO_URI) throw new Error('MONGO_URI is missing in .env');
-  await mongoose.connect(process.env.MONGO_URI);
+  const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
+
+  if (!mongoUri) {
+    throw new Error('MONGO_URI is missing in .env');
+  }
+
+  await mongoose.connect(mongoUri);
   console.log('MongoDB connected');
 }
+
 module.exports = connectDB;

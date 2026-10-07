@@ -4,6 +4,7 @@ const {
   register,
   login,
   me,
+  updateProfile,
   logout
 } = require('../controllers/authController');
 const validate = require('../middleware/validate');
@@ -34,6 +35,16 @@ router.post(
 );
 
 router.get('/me', protect, me);
+router.patch(
+  '/me',
+  protect,
+  [
+    body('name').trim().notEmpty(),
+    body('phone').optional().isString().trim().isLength({ max: 30 })
+  ],
+  validate,
+  updateProfile
+);
 router.post('/logout', protect, logout);
 
 module.exports = router;

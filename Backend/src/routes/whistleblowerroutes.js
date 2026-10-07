@@ -8,7 +8,6 @@ const { PERMISSIONS } = require('../utils/constants');
 
 router.post(
   '/reports',
-  protect,
   [
     body('content').trim().isLength({ min: 10, max: 10000 }),
     body('category').optional().isString().trim().isLength({ min: 2, max: 100 }),
