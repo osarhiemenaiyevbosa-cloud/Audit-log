@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { body, param } = require('express-validator');
-const { submit, list, detail, updateStatus } = require('../controllers/whistleblowerController');
+const { submit, list, detail, updateStatus } = require('../controllers/whistleblowercontroller');
 const validate = require('../middleware/validate');
 const { protect } = require('../middleware/authMiddleware');
 const { requirePermission } = require('../middleware/permissionMiddleware');
