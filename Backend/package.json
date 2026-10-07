@@ -1,7 +1,7 @@
 {
   "name": "audit-log",
   "version": "1.0.0",
-  "description": "Audit log dashboard",
+  "description": "Audit log dashboard backend",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -10,7 +10,13 @@
     "seed:admin": "node src/utils/seed.js",
     "test": "node --test"
   },
-  "keywords": [],
+  "keywords": [
+    "audit-log",
+    "dashboard",
+    "express",
+    "mongodb",
+    "mongoose"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
@@ -28,9 +34,14 @@
     "mongoose": "^9.10.2",
     "multer": "^2.4.0",
     "nodemailer": "^10.0.10",
-    "nodemon": "^3.1.14",
     "swagger-jsdoc": "^6.3.0",
     "swagger-ui-express": "^5.0.1",
     "uuid": "^14.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }

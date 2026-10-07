@@ -7,7 +7,7 @@ const connectDB = require("./config/db");
 const routes = require("./routes");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./docs/swagger");
-const { notFound, errorHandler } = require("./middleware/errorMiddleware");
+const { notFound, errorHandler } = require("./middleware/errormiddleware");
 const app = express();
 app.use(helmet());
 const allowedOrigins = [
